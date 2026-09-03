@@ -56,9 +56,10 @@ the visitor's email client via a pre-filled `mailto:` link.
 ## Site URL, link previews and SEO
 
 `index.html` carries the Open Graph / Twitter tags, canonical URL and a JSON-LD
-`Person` record. They point at a placeholder domain: search the file for
-`eniola-akingbade.vercel.app` and replace every occurrence with your real
-Vercel URL (or custom domain) after the first deploy, then redeploy.
+`Person` record. They point at the live site:
+https://portfolio-gules-kappa-ojq9t9knsb.vercel.app/. If you later add a
+custom domain, search the file for that URL and replace every occurrence,
+then redeploy.
 
 The share image is `public/og.png` (1200x630). Regenerate it with the
 `scripts/og.py` script (needs `pip install pillow`) if the headline changes, or replace it with any 1200x630 PNG.
