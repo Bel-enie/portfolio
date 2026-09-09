@@ -1,13 +1,27 @@
-import { Link } from "react-router-dom";
+import SpecularButton from "./SpecularButton";
 
-const base =
-  "group/btn inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-200 active:translate-y-px";
-
+/**
+ * Site-wide button. Every button routes through SpecularButton so they all
+ * share the pointer-tracking rim light; this file only maps the two site
+ * variants onto its colour props.
+ */
 const variants = {
-  primary:
-    "bg-accent text-white shadow-[0_10px_30px_-12px_rgba(226,88,31,0.7)] hover:bg-accent-hover",
-  outline:
-    "border border-line-strong text-ink hover:border-muted hover:bg-surface",
+  primary: {
+    tint: "#e2581f", // accent
+    tintOpacity: 1,
+    textColor: "#ffffff",
+    lineColor: "#ffe4d4",
+    baseColor: "#8f3510",
+    intensity: 1.15,
+  },
+  outline: {
+    tint: "#1c1c1c", // surface
+    tintOpacity: 0.9,
+    textColor: "#ece9e2",
+    lineColor: "#ffffff",
+    baseColor: "#8a8a8a",
+    intensity: 0.95,
+  },
 };
 
 /** Trailing arrow that nudges right on hover. */
@@ -31,39 +45,22 @@ const TrailingArrow = () => (
 );
 
 export default function Button({
-  to,
-  href,
   variant = "primary",
   arrow = false,
+  pill = false,
   className = "",
   children,
   ...rest
 }) {
-  const cls = `${base} ${variants[variant]} ${className}`;
-  const content = (
-    <>
+  return (
+    <SpecularButton
+      {...variants[variant]}
+      radius={pill ? 999 : 10}
+      className={`group/btn ${className}`}
+      {...rest}
+    >
       {children}
       {arrow && <TrailingArrow />}
-    </>
-  );
-
-  if (to) {
-    return (
-      <Link to={to} className={cls} {...rest}>
-        {content}
-      </Link>
-    );
-  }
-  if (href) {
-    return (
-      <a href={href} className={cls} {...rest}>
-        {content}
-      </a>
-    );
-  }
-  return (
-    <button className={cls} {...rest}>
-      {content}
-    </button>
+    </SpecularButton>
   );
 }

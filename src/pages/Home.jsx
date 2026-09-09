@@ -115,15 +115,10 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={240}>
-                <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
-                  <div className="flex flex-wrap gap-3">
-                    <Button to="/projects" arrow>
-                      View projects
-                    </Button>
-                    <Button to="/contact" variant="outline">
-                      Get in touch
-                    </Button>
-                  </div>
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <Button to="/projects" arrow>
+                    View projects
+                  </Button>
                   <CvLink />
                 </div>
               </Reveal>

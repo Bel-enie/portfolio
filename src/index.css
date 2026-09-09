@@ -1,4 +1,8 @@
 @import "tailwindcss";
+/* Imported here (not from the component) so the `components` layer is
+   declared after Tailwind's layer order and beats its base reset, while
+   utilities passed via className still win. */
+@import "./components/SpecularButton.css" layer(components);
 
 @theme {
   /* Dark, warm-neutral base with a single terracotta accent. */

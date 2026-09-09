@@ -5,6 +5,7 @@ import Label from "../components/Label";
 import SocialLinks from "../components/SocialLinks";
 import Reveal from "../components/Reveal";
 import CvLink from "../components/CvLink";
+import Button from "../components/Button";
 import { profile, availability } from "../data/site";
 
 const empty = { name: "", email: "", subject: "", message: "" };
@@ -55,9 +56,6 @@ function Field({ id, label, error, children }) {
 // Inputs sit a shade darker than the card so they read as fields.
 const inputClass =
   "w-full rounded-md border bg-paper px-3.5 py-2.5 text-[15px] text-ink outline-none transition-colors duration-150 placeholder:text-muted/70 hover:border-muted focus:border-accent";
-
-const primaryButton =
-  "inline-flex items-center justify-center rounded-md bg-accent px-5 py-2.5 text-[15px] font-medium text-white transition-colors duration-150 hover:bg-accent-hover";
 
 export default function Contact() {
   const [values, setValues] = useState(empty);
@@ -138,7 +136,7 @@ export default function Contact() {
           <Reveal as="aside">
             <Label>Find me</Label>
             <SocialLinks size={28} className="mt-6" />
-            <CvLink className="mt-6" />
+            <CvLink size="sm" className="mt-6" />
 
             <dl className="mt-8 space-y-5 border-t border-line pt-7">
               {availability.map((item) => (
@@ -192,9 +190,7 @@ export default function Contact() {
                     : "This form is not connected to a mail server yet. Send it through your email client and it will reach me directly."}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-5">
-                  <a href={mailtoFallback} className={primaryButton}>
-                    Open in email client
-                  </a>
+                  <Button href={mailtoFallback}>Open in email client</Button>
                   <button
                     type="button"
                     onClick={reset}
@@ -274,13 +270,9 @@ export default function Contact() {
                 </Field>
 
                 <div className="border-t border-line pt-6">
-                  <button
-                    type="submit"
-                    disabled={status === "sending"}
-                    className={`${primaryButton} disabled:cursor-wait disabled:opacity-60`}
-                  >
+                  <Button type="submit" disabled={status === "sending"}>
                     {status === "sending" ? "Sending…" : "Send message"}
-                  </button>
+                  </Button>
 
                   {/* Secondary option, stacked under the primary action */}
                   <p className="mt-4 font-mono text-[12px] text-muted">

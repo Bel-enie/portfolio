@@ -126,7 +126,7 @@ export default function About() {
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
             <Button to="/contact">Get in touch</Button>
-            <CvLink variant="button" />
+            <CvLink />
           </div>
         </Reveal>
       </Container>

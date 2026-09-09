@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Container from "./Container";
+import Button from "./Button";
 import { profile } from "../data/site";
 
 const nav = [
@@ -78,12 +79,9 @@ export default function Header() {
                 ))}
               </ul>
             </nav>
-            <Link
-              to="/contact"
-              className="inline-flex rounded-full bg-accent px-4 py-2 text-[13px] font-medium text-white transition-colors duration-200 hover:bg-accent-hover"
-            >
+            <Button to="/contact" size="sm" pill>
               Let's talk
-            </Link>
+            </Button>
           </div>
 
           {/* Mobile: menu button */}
@@ -133,13 +131,9 @@ export default function Header() {
                 </li>
               ))}
             </ul>
-            <Link
-              to="/contact"
-              onClick={close}
-              className="mt-3 flex items-center justify-center rounded-md bg-accent px-4 py-2.5 text-[14px] font-medium text-white"
-            >
+            <Button to="/contact" onClick={close} className="mt-3 w-full">
               Let's talk
-            </Link>
+            </Button>
           </nav>
         )}
       </Container>
