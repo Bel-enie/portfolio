@@ -15,5 +15,11 @@ export default function LocalTime() {
     return () => clearInterval(timer);
   }, []);
 
-  return <time dateTime={now.toISOString()}>{formatter.format(now)}</time>;
+  // Pre-rendered HTML carries build-time text; the client corrects it on
+  // hydration, so the mismatch is expected.
+  return (
+    <time dateTime={now.toISOString()} suppressHydrationWarning>
+      {formatter.format(now)}
+    </time>
+  );
 }

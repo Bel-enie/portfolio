@@ -37,7 +37,10 @@ export const projects = [
     // Drop the file into public/projects/ and it will show automatically.
     image: "/projects/twinstate.webp",
     award: "Winner — 2026 Ontomorph AI Hackathon",
-    links: [{ label: "twinstate.vercel.app", href: "https://twinstate.vercel.app" }],
+    links: [
+      { label: "twinstate.vercel.app", href: "https://twinstate.vercel.app" },
+      { label: "Source on GitHub", href: "https://github.com/Bel-enie/twinstate" },
+    ],
     featured: true,
   },
   {
@@ -62,6 +65,7 @@ export const projects = [
     image: "/projects/scopeshield.webp",
     links: [
       { label: "scopeshield-five.vercel.app", href: "https://scopeshield-five.vercel.app" },
+      { label: "Source on GitHub", href: "https://github.com/Bel-enie/Scopeshield" },
     ],
     featured: true,
   },

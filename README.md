@@ -39,6 +39,18 @@ The "Download CV" links serve `public/Eniola-Akingbade-CV.pdf`. To update it,
 overwrite that file (keep the name) and push. To hide the links, set
 `cv: null` in `src/data/site.js`.
 
+## Pre-rendering (SEO)
+
+`npm run build` runs `vite build` and then `scripts/prerender.mjs`, which renders
+each route to static HTML (`dist/index.html`, `projects.html`, `about.html`,
+`contact.html`) with per-page titles and descriptions, plus `dist/app.html` as an
+empty shell for unknown URLs. `vercel.json` maps the clean URLs onto those files
+and the client hydrates the markup instead of re-rendering it. Crawlers that do
+not run JavaScript therefore see the full page text.
+
+If you add a route, add it to `pages` in `scripts/prerender.mjs` and to the
+rewrites in `vercel.json`.
+
 ## Project screenshots
 
 Each project shows placeholder art until it has an image. Drop a screenshot
@@ -64,8 +76,8 @@ the visitor's email client via a pre-filled `mailto:` link.
 `index.html` carries the Open Graph / Twitter tags, canonical URL and a JSON-LD
 `Person` record. They point at the live site:
 https://portfolio-gules-kappa-ojq9t9knsb.vercel.app/. If you later add a
-custom domain, search the file for that URL and replace every occurrence,
-then redeploy.
+custom domain, search `index.html`, `scripts/prerender.mjs`, `public/sitemap.xml`
+and `public/robots.txt` for that URL, replace every occurrence, then redeploy.
 
 The share image is `public/og.png` (1200x630). Regenerate it with the
 `scripts/og.py` script (needs `pip install pillow`) if the headline changes, or replace it with any 1200x630 PNG.
@@ -78,5 +90,6 @@ automatically:
 - Build command: `npm run build`
 - Output directory: `dist`
 
-`vercel.json` already rewrites all routes to `index.html` so deep links like
+`vercel.json` maps `/projects`, `/about` and `/contact` to their pre-rendered
+files and everything else to `app.html`, so deep links like
 `/projects` work on refresh.

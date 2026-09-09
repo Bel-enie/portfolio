@@ -78,9 +78,13 @@ void main() {
 }
 `;
 
-const reducedMotion = () =>
+// Static (no WebGL) when the visitor prefers reduced motion, or has no fine
+// pointer: the rim light is driven by pointer proximity, so on touch devices
+// it would never show while still costing a GL context and a render loop.
+const shouldBeStatic = () =>
   typeof window !== "undefined" &&
-  window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  (window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ||
+    !window.matchMedia?.("(hover: hover) and (pointer: fine)").matches);
 
 export default function SpecularButton({
   children,
@@ -110,8 +114,8 @@ export default function SpecularButton({
   const btnRef = useRef(null);
   const fxRef = useRef(null);
   const propsRef = useRef({});
-  // Reduced-motion users get the static CSS version from the first paint.
-  const [isStatic] = useState(reducedMotion);
+  // Reduced-motion and touch users get the static CSS version.
+  const [isStatic] = useState(shouldBeStatic);
 
   // Keep the latest tunable props readable from the render loop without
   // restarting it. Runs after every render.
@@ -134,7 +138,13 @@ export default function SpecularButton({
   useEffect(() => {
     const btn = btnRef.current;
     const fx = fxRef.current;
-    if (!btn || !fx || isStatic) return;
+    if (!btn || !fx) return;
+    if (isStatic) {
+      // Also set imperatively: pre-rendered HTML was produced without a
+      // window, so the server-side className lacks this modifier.
+      btn.classList.add("specular-button--static");
+      return;
+    }
 
     let renderer;
     try {
