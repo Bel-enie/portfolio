@@ -4,6 +4,7 @@ import PageHeader from "../components/PageHeader";
 import Label from "../components/Label";
 import SocialLinks from "../components/SocialLinks";
 import Reveal from "../components/Reveal";
+import CvLink from "../components/CvLink";
 import { profile, availability } from "../data/site";
 
 const empty = { name: "", email: "", subject: "", message: "" };
@@ -137,6 +138,7 @@ export default function Contact() {
           <Reveal as="aside">
             <Label>Find me</Label>
             <SocialLinks size={28} className="mt-6" />
+            <CvLink className="mt-6" />
 
             <dl className="mt-8 space-y-5 border-t border-line pt-7">
               {availability.map((item) => (

@@ -10,6 +10,8 @@ export const profile = {
   githubHandle: "Bel-enie",
   linkedin: "https://linkedin.com/in/eniola-akingbade-b39291416",
   linkedinHandle: "eniola-akingbade",
+  // File in public/. Set to null to hide every "Download CV" link.
+  cv: "/Eniola-Akingbade-CV.pdf",
 };
 
 export const projects = [

@@ -33,6 +33,12 @@ needs touching for copy or new projects.
 
 Colors and fonts live in the `@theme` block at the top of `src/index.css`.
 
+## CV
+
+The "Download CV" links serve `public/Eniola-Akingbade-CV.pdf`. To update it,
+overwrite that file (keep the name) and push. To hide the links, set
+`cv: null` in `src/data/site.js`.
+
 ## Project screenshots
 
 Each project shows placeholder art until it has an image. Drop a screenshot

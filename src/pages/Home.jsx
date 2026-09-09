@@ -6,6 +6,7 @@ import ProjectRow from "../components/ProjectRow";
 import Reveal from "../components/Reveal";
 import Spotlight from "../components/Spotlight";
 import LocalTime from "../components/LocalTime";
+import CvLink from "../components/CvLink";
 import {
   profile,
   projects,
@@ -114,13 +115,16 @@ export default function Home() {
               </Reveal>
 
               <Reveal delay={240}>
-                <div className="mt-10 flex flex-wrap gap-3">
-                  <Button to="/projects" arrow>
-                    View projects
-                  </Button>
-                  <Button to="/contact" variant="outline">
-                    Get in touch
-                  </Button>
+                <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+                  <div className="flex flex-wrap gap-3">
+                    <Button to="/projects" arrow>
+                      View projects
+                    </Button>
+                    <Button to="/contact" variant="outline">
+                      Get in touch
+                    </Button>
+                  </div>
+                  <CvLink />
                 </div>
               </Reveal>
             </div>

@@ -3,6 +3,7 @@ import PageHeader from "../components/PageHeader";
 import Label from "../components/Label";
 import Button from "../components/Button";
 import Reveal from "../components/Reveal";
+import CvLink from "../components/CvLink";
 import { education, skills, achievements } from "../data/site";
 
 export default function About() {
@@ -123,9 +124,10 @@ export default function About() {
             If any of this lines up with something you are building, I would
             like to hear about it.
           </p>
-          <Button to="/contact" className="mt-6">
-            Get in touch
-          </Button>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button to="/contact">Get in touch</Button>
+            <CvLink variant="button" />
+          </div>
         </Reveal>
       </Container>
     </>
