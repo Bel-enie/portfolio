@@ -90,20 +90,7 @@ export default function Home() {
           <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-16">
             <div>
               <Reveal>
-                <p className="inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/70 py-1.5 pr-3.5 pl-2.5 font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping-soft rounded-full bg-live" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-live" />
-                  </span>
-                  <span className="sm:hidden">Open to work · Lagos</span>
-                  <span className="hidden sm:inline">
-                    Open to internships & freelance · {profile.location}
-                  </span>
-                </p>
-              </Reveal>
-
-              <Reveal delay={80}>
-                <h1 className="mt-7 max-w-3xl text-[2.75rem] leading-[1.02] font-semibold sm:text-6xl lg:text-7xl">
+                <h1 className="max-w-3xl text-[2.75rem] leading-[1.02] font-semibold sm:text-6xl lg:text-7xl">
                   <Headline text={profile.headline} />
                 </h1>
               </Reveal>
