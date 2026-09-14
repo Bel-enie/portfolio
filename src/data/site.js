@@ -181,8 +181,8 @@ export const testimonials = [
   {
     quote:
       "What sets Eniola apart is not just that he can build, but that he can articulate why he built it that way. That is the habit of a strong engineer.",
-    name: "Placeholder Name",
-    role: "Placeholder Role",
+    name: "Michael",
+    role: "Crypto Analyst · Product Manager",
   },
   {
     quote:
