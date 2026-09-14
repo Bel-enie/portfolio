@@ -22,7 +22,7 @@ const pages = [
   {
     route: "/",
     file: "index.html",
-    title: "Eniola Akingbade — Software Developer",
+    title: "Eniola Akingbade — Full-Stack Developer · React, Node.js, AI",
     description:
       "Eniola Akingbade builds AI products that ship — winner of the 2026 Ontomorph AI Hackathon, Computer Science student at Obafemi Awolowo University, based in Lagos.",
   },

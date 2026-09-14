@@ -117,6 +117,42 @@ export default function CaseStudy({ project, index = 0 }) {
             </ul>
           )}
 
+          {/* Technical detail, collapsed by default to keep the card compact.
+              Native <details> keeps the text in the DOM for crawlers. */}
+          {project.underTheHood?.length > 0 && (
+            <details className="group/hood mt-6 border-t border-line pt-4">
+              <summary className="flex cursor-pointer list-none items-center gap-2 font-mono text-[11px] tracking-wider text-muted uppercase transition-colors hover:text-accent [&::-webkit-details-marker]:hidden">
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  aria-hidden="true"
+                  className="transition-transform duration-200 group-open/hood:rotate-90"
+                >
+                  <path d="M3 1.5 6.5 5 3 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Under the hood
+                <span className="ml-1 normal-case tracking-normal text-muted/70">
+                  · {project.underTheHood.length} decisions
+                </span>
+              </summary>
+              <dl className="mt-4 space-y-3.5">
+                {project.underTheHood.map((item) => (
+                  <div
+                    key={item.label}
+                    className="grid gap-1 sm:grid-cols-[160px_1fr] sm:gap-5"
+                  >
+                    <dt className="text-[13px] font-medium text-ink">{item.label}</dt>
+                    <dd className="text-[13.5px] leading-relaxed text-muted text-pretty">
+                      {item.text}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </details>
+          )}
+
           {/* Case-study meta: two compact rows */}
           <dl className="mt-6 grid gap-x-8 gap-y-5 border-t border-line pt-5 sm:grid-cols-2">
             <Meta label="Role">{project.role}</Meta>

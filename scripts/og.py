@@ -75,7 +75,7 @@ d.rectangle((0, 0, 6, H), fill=ACCENT)
 d.rounded_rectangle((80, 76, 132, 128), radius=10, fill=INK)
 d.text((106, 102), "EA", font=mono, fill=PAPER, anchor="mm")
 d.text((150, 102), "Eniola Akingbade", font=display_sm, fill=INK, anchor="lm")
-d.text((150 + display_sm.getlength("Eniola Akingbade") + 22, 104), "Software Developer", font=mono_sm, fill=MUTED, anchor="lm")
+d.text((150 + display_sm.getlength("Eniola Akingbade") + 22, 104), "Full-Stack Developer", font=mono_sm, fill=MUTED, anchor="lm")
 
 # Headline with accent last word.
 line1, line2_a, line2_b = "I build AI products", "that ", "ship."
