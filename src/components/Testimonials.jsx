@@ -26,8 +26,12 @@ function Card({ item }) {
 export default function Testimonials() {
   if (!testimonials.length) return null;
 
+  // Each half of the track needs at least five cards (~1.8k px) so it is
+  // wider than any viewport; short lists are repeated to get there.
+  const reps = Math.max(1, Math.ceil(5 / testimonials.length));
+  const copies = Array.from({ length: reps * 2 }, (_, i) => i);
   // ~7.5 s per card keeps the pace readable however many entries there are.
-  const duration = `${Math.max(24, testimonials.length * 7.5)}s`;
+  const duration = `${Math.max(24, testimonials.length * reps * 7.5)}s`;
 
   return (
     <div
@@ -35,21 +39,21 @@ export default function Testimonials() {
       style={{ "--marquee-duration": duration }}
     >
       <div className="flex w-max gap-5 px-5 motion-safe:animate-marquee motion-reduce:w-auto motion-reduce:overflow-x-auto motion-reduce:pb-2 group-hover/marquee:[animation-play-state:paused] group-focus-within/marquee:[animation-play-state:paused] sm:px-6">
-        <ul className="flex shrink-0 gap-5">
-          {testimonials.map((item, i) => (
-            <li key={i} className="flex">
-              <Card item={item} />
-            </li>
-          ))}
-        </ul>
-        {/* Second copy purely for the seamless loop; hidden from readers. */}
-        <ul aria-hidden="true" className="flex shrink-0 gap-5 motion-reduce:hidden">
-          {testimonials.map((item, i) => (
-            <li key={i} className="flex">
-              <Card item={item} />
-            </li>
-          ))}
-        </ul>
+        {copies.map((copy) => (
+          // Only the first copy is exposed to assistive tech; the rest exist
+          // purely so the loop is seamless.
+          <ul
+            key={copy}
+            aria-hidden={copy > 0 ? "true" : undefined}
+            className={`flex shrink-0 gap-5 ${copy > 0 ? "motion-reduce:hidden" : ""}`}
+          >
+            {testimonials.map((item, i) => (
+              <li key={i} className="flex">
+                <Card item={item} />
+              </li>
+            ))}
+          </ul>
+        ))}
       </div>
     </div>
   );

@@ -168,45 +168,27 @@ export const education = {
   note: "Third year",
 };
 
-// Home-page testimonials marquee. Every entry below is a PLACEHOLDER —
-// replace all six with real quotes (or delete entries) before relying on
-// this section. Set the array to [] to hide the section entirely.
+// Home-page testimonials marquee. Quotes are real; `name` and `role` are
+// still PLACEHOLDERS — fill them in before relying on this section. Set the
+// array to [] to hide the section entirely.
 export const testimonials = [
   {
     quote:
-      "Placeholder quote — two short sentences about working with Eniola. Swap this text for a real one.",
+      "He's the person I message when I'm stuck, because he'll ask two questions and somehow the problem is smaller. Genuinely one of the most curious people I know.",
     name: "Placeholder Name",
-    role: "Placeholder Role · Placeholder Company",
+    role: "Placeholder Role",
   },
   {
     quote:
-      "Placeholder quote — what was built, and what it changed for the person saying it.",
+      "What sets Eniola apart is not just that he can build, but that he can articulate why he built it that way. That is the habit of a strong engineer.",
     name: "Placeholder Name",
-    role: "Placeholder Role · Hackathon judge",
+    role: "Placeholder Role",
   },
   {
     quote:
-      "Placeholder quote — a client remark about communication, delivery, or reliability.",
+      "He's the person you go to when something needs to actually get done rather than talked about.",
     name: "Placeholder Name",
-    role: "Placeholder Role · Freelance client",
-  },
-  {
-    quote:
-      "Placeholder quote — a lecturer or mentor on how Eniola approaches problems.",
-    name: "Placeholder Name",
-    role: "Placeholder Role · Lecturer, OAU",
-  },
-  {
-    quote:
-      "Placeholder quote — a teammate on collaborating during a build sprint.",
-    name: "Placeholder Name",
-    role: "Placeholder Role · Teammate",
-  },
-  {
-    quote:
-      "Placeholder quote — a short, concrete line is better than a long, vague one.",
-    name: "Placeholder Name",
-    role: "Placeholder Role · Placeholder Company",
+    role: "Placeholder Role",
   },
 ];
 
