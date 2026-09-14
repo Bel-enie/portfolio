@@ -7,6 +7,7 @@ import Reveal from "../components/Reveal";
 import Spotlight from "../components/Spotlight";
 import SocialLinks from "../components/SocialLinks";
 import CvLink from "../components/CvLink";
+import Testimonials from "../components/Testimonials";
 import {
   profile,
   projects,
@@ -157,6 +158,21 @@ export default function Home() {
           >
             All projects →
           </Link>
+        </Container>
+      </section>
+
+      {/* Testimonials — content in src/data/site.js (placeholders for now) */}
+      <section className="border-b border-line">
+        <Container className="py-20 sm:py-24">
+          <Reveal>
+            <Label>Testimonials</Label>
+            <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
+              What people say
+            </h2>
+          </Reveal>
+          <Reveal delay={100} className="mt-10">
+            <Testimonials />
+          </Reveal>
         </Container>
       </section>
 

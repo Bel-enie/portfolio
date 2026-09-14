@@ -168,6 +168,48 @@ export const education = {
   note: "Third year",
 };
 
+// Home-page testimonials marquee. Every entry below is a PLACEHOLDER —
+// replace all six with real quotes (or delete entries) before relying on
+// this section. Set the array to [] to hide the section entirely.
+export const testimonials = [
+  {
+    quote:
+      "Placeholder quote — two short sentences about working with Eniola. Swap this text for a real one.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Placeholder Company",
+  },
+  {
+    quote:
+      "Placeholder quote — what was built, and what it changed for the person saying it.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Hackathon judge",
+  },
+  {
+    quote:
+      "Placeholder quote — a client remark about communication, delivery, or reliability.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Freelance client",
+  },
+  {
+    quote:
+      "Placeholder quote — a lecturer or mentor on how Eniola approaches problems.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Lecturer, OAU",
+  },
+  {
+    quote:
+      "Placeholder quote — a teammate on collaborating during a build sprint.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Teammate",
+  },
+  {
+    quote:
+      "Placeholder quote — a short, concrete line is better than a long, vague one.",
+    name: "Placeholder Name",
+    role: "Placeholder Role · Placeholder Company",
+  },
+];
+
 export const availability = [
   { label: "Location", value: "Lagos, Nigeria" },
   { label: "Timezone", value: "WAT (UTC+1)" },
