@@ -50,7 +50,8 @@ export default function Header() {
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-ink font-mono text-[12px] font-medium text-paper">
               {initials}
             </span>
-            <span className="text-[15px] font-semibold tracking-tight">
+            {/* Name hidden on phones; the monogram carries the identity */}
+            <span className="hidden text-[15px] font-semibold tracking-tight sm:inline">
               {profile.name}
             </span>
             <span className="hidden font-mono text-[11px] text-muted md:inline">

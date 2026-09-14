@@ -12,25 +12,29 @@ export default function About() {
       <PageHeader
         label="About"
         title="A little more context"
-        intro="Computer science student, and the person who ends up writing the web layer."
+        intro="Who I am, what I work with, and what I've done so far."
       />
 
       <Container className="pt-14 pb-16 sm:pt-16 sm:pb-20">
         <div className="grid gap-12 md:grid-cols-[1fr_300px] md:gap-16">
           <Reveal className="max-w-2xl space-y-4 text-lg text-pretty">
             <p>
-              I am a third-year Computer Science and Technology student at
-              Obafemi Awolowo University. Most of my time outside lectures goes
-              into building full-stack web apps and exploring where AI is
-              genuinely useful rather than just impressive.
+              Hi, I'm Eniola Akingbade — most people call me Beloved. I'm a
+              Computer Science and Technology student at Obafemi Awolowo
+              University with a genuine love for building things that work:
+              cleanly, reliably, and without the drama. Whether it's a web app,
+              an automation system, or a scrappy hackathon project built in a
+              few days, I care about getting the details right.
             </p>
             <p>
-              In 2026 I won the Ontomorph AI Hackathon with Twinstate, an
-              AI-powered clinical decision-support app I designed and
-              implemented on my own. The year before, I placed in the national
-              top ten at the Naija Automation PLC Programming Competition, which
-              is where industrial automation joined web development on my list
-              of things I actually enjoy.
+              My stack is JavaScript, React, Node.js and Python. On the more
+              unconventional side, I also work with Siemens TIA Portal for
+              industrial automation and PLC programming.
+            </p>
+            <p>
+              Outside of code, I serve as Class Representative at OAU, which has
+              sharpened my communication and coordination skills just as much
+              as any project has.
             </p>
           </Reveal>
 
