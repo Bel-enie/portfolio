@@ -174,8 +174,8 @@ export const education = {
 export const testimonials = [
   {
     quote:
-      "He's the person I message when I'm stuck, because he'll ask two questions and somehow the problem is smaller. Genuinely one of the most curious people I know.",
-    name: "Placeholder Name",
+      "He's one of the people I message when I'm stuck, because he'll ask two questions and somehow the problem is smaller. Genuinely one of the most curious people I know.",
+    name: "Viktor",
     role: "Placeholder Role",
   },
   {
