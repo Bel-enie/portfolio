@@ -27,7 +27,7 @@ function NowCard() {
   ];
 
   return (
-    <Spotlight className="card-highlight rounded-xl border border-line bg-surface/80 backdrop-blur-sm">
+    <Spotlight className="card-highlight rounded-xl border border-line bg-surface">
       <div className="flex items-center gap-2 border-b border-line px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#e5686b]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#e8c15a]" />

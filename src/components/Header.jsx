@@ -46,11 +46,7 @@ export default function Header() {
       <Container>
         <div className="flex h-16 items-center justify-between gap-4">
           {/* Identity */}
-          <Link
-            to="/"
-            aria-label={`${profile.name} — home`}
-            className="flex items-center gap-3 text-ink"
-          >
+          <Link to="/" className="flex items-center gap-3 text-ink">
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-ink font-mono text-[12px] font-medium text-paper">
               {initials}
             </span>
@@ -65,7 +61,7 @@ export default function Header() {
           {/* Desktop: pill nav + CTA */}
           <div className="hidden items-center gap-3 sm:flex">
             <nav aria-label="Main">
-              <ul className="flex items-center gap-0.5 rounded-full border border-line bg-surface/70 p-1 backdrop-blur-sm">
+              <ul className="flex items-center gap-0.5 rounded-full border border-line bg-surface p-1">
                 {nav.map((item) => (
                   <li key={item.to}>
                     <NavLink

@@ -7,11 +7,13 @@ import SpecularButton from "./SpecularButton";
  */
 const variants = {
   primary: {
-    tint: "#e2581f", // accent
+    // A step darker than the text accent so white labels pass WCAG AA
+    // (4.8:1); the rim light supplies the brightness on hover.
+    tint: "#c2410c",
     tintOpacity: 1,
     textColor: "#ffffff",
     lineColor: "#ffe4d4",
-    baseColor: "#8f3510",
+    baseColor: "#7e2e0b",
     intensity: 1.15,
   },
   outline: {

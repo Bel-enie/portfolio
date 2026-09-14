@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Renderer, Program, Mesh, Triangle, Color } from "ogl";
+// `ogl` is imported dynamically inside the effect so phones and
+// reduced-motion users (who get the static variant) never download it.
 // Styles live in ./SpecularButton.css, imported from src/index.css.
 
 /**
@@ -146,6 +147,20 @@ export default function SpecularButton({
       return;
     }
 
+    let cancelled = false;
+    let cleanup = () => {};
+
+    import("ogl").then((ogl) => {
+      if (cancelled) return;
+      cleanup = start(ogl) || (() => {});
+    });
+
+    return () => {
+      cancelled = true;
+      cleanup();
+    };
+
+    function start({ Renderer, Program, Mesh, Triangle, Color }) {
     let renderer;
     try {
       const dpr = window.devicePixelRatio || 1;
@@ -304,6 +319,7 @@ export default function SpecularButton({
       if (gl.canvas.parentNode === fx) fx.removeChild(gl.canvas);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
     };
+    }
   }, [isStatic]);
 
   const Tag = to ? Link : href ? "a" : "button";

@@ -63,6 +63,10 @@ export default function ProjectRow({ project, index = 0 }) {
           {showImage ? (
             <img
               src={project.image}
+              srcSet={`${project.image.replace(".webp", "-720.webp")} 720w, ${project.image} 1200w`}
+              sizes="(min-width: 768px) 340px, calc(100vw - 48px)"
+              width="1200"
+              height="900"
               alt={`${project.name} screenshot`}
               loading="lazy"
               onError={() => setImageFailed(true)}

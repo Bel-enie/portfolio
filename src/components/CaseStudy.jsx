@@ -28,8 +28,13 @@ export default function CaseStudy({ project, index = 0 }) {
       {showImage ? (
         <img
           src={project.image}
+          srcSet={`${project.image.replace(".webp", "-720.webp")} 720w, ${project.image} 1200w`}
+          sizes="(min-width: 1024px) 360px, calc(100vw - 48px)"
+          width="1200"
+          height="900"
           alt={`${project.name} screenshot`}
           loading={index === 0 ? "eager" : "lazy"}
+          fetchPriority={index === 0 ? "high" : "auto"}
           onError={() => setImageFailed(true)}
           className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover/thumb:scale-[1.03]"
         />
