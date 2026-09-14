@@ -75,8 +75,8 @@ export default function Home() {
               className="space-y-5 text-[17px] leading-relaxed text-muted text-pretty sm:text-lg"
             >
               <p>
-                I'm a full-stack developer who builds AI products that actually
-                ship — not prototypes. Between semesters I've built a{" "}
+                I'm a full-stack developer who builds AI products that
+                actually ship, not prototypes. Between semesters I've built a{" "}
                 <Hl>hackathon-winning</Hl> clinical decision-support app on a
                 digital-twin platform, launched a{" "}
                 <Hl>live SaaS for freelancers</Hl> that flags scope creep
@@ -87,7 +87,7 @@ export default function Home() {
                 My stack is <Hl>JavaScript</Hl>, <Hl>React</Hl>,{" "}
                 <Hl>Node.js</Hl> and <Hl>Python</Hl>. On the more
                 unconventional side, I also work with Siemens TIA Portal for
-                industrial automation and PLC programming — so I'm as
+                industrial automation and PLC programming, so I'm just as
                 comfortable with a ladder diagram as with a REST API.
               </p>
               <p>
