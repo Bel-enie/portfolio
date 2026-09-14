@@ -5,7 +5,7 @@ import Button from "../components/Button";
 import ProjectRow from "../components/ProjectRow";
 import Reveal from "../components/Reveal";
 import Spotlight from "../components/Spotlight";
-import LocalTime from "../components/LocalTime";
+import SocialLinks from "../components/SocialLinks";
 import CvLink from "../components/CvLink";
 import {
   profile,
@@ -17,59 +17,12 @@ import {
 
 const featured = projects.filter((p) => p.featured);
 
-/** Small editor-window card summarising what's happening right now. */
-function NowCard() {
-  const rows = [
-    { key: "status", value: "Available for work", live: true },
-    { key: "building", value: "AI products & full-stack apps" },
-    { key: "studying", value: "Computer Science · OAU, year 3" },
-    { key: "based_in", value: profile.location },
-  ];
-
+/** Key phrase in the bio: soft accent chip, like a highlighter pass. */
+function Hl({ children }) {
   return (
-    <Spotlight className="card-highlight rounded-xl border border-line bg-surface">
-      <div className="flex items-center gap-2 border-b border-line px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-[#e5686b]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-[#e8c15a]" />
-        <span className="h-2.5 w-2.5 rounded-full bg-live" />
-        <span className="ml-2 font-mono text-[12px] text-muted">
-          eniola.now
-        </span>
-      </div>
-      <dl className="space-y-3 px-5 py-5 font-mono text-[13px]">
-        {rows.map((row) => (
-          <div key={row.key} className="flex items-baseline gap-3">
-            <dt className="w-[84px] shrink-0 text-muted">{row.key}</dt>
-            <dd className="flex items-center gap-2 text-ink">
-              {row.live && (
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping-soft rounded-full bg-live" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-live" />
-                </span>
-              )}
-              {row.value}
-            </dd>
-          </div>
-        ))}
-        <div className="flex items-baseline gap-3 border-t border-line pt-3">
-          <dt className="w-[84px] shrink-0 text-muted">local_time</dt>
-          <dd className="text-ink">
-            <LocalTime /> WAT
-          </dd>
-        </div>
-      </dl>
-    </Spotlight>
-  );
-}
-
-/** Splits the headline so the last word can carry the accent colour. */
-function Headline({ text }) {
-  const words = text.replace(/\.$/, "").split(" ");
-  const last = words.pop();
-  return (
-    <>
-      {words.join(" ")} <span className="text-accent">{last}.</span>
-    </>
+    <span className="rounded-[4px] bg-accent-soft px-1 py-0.5 font-medium text-ink">
+      {children}
+    </span>
   );
 }
 
@@ -84,21 +37,22 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero */}
+      {/* Hero — identity on the left, the story on the right */}
       <section className="border-b border-line">
         <Container className="py-20 sm:py-28 lg:py-32">
-          <div className="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:items-center lg:gap-16">
-            <div>
+          <div className="grid gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:items-start lg:gap-20">
+            <div className="flex flex-col lg:min-h-[28rem]">
               <Reveal>
-                <h1 className="max-w-3xl text-[2.75rem] leading-[1.02] font-semibold sm:text-6xl lg:text-7xl">
-                  <Headline text={profile.headline} />
+                <h1 className="text-[2.75rem] leading-[1.02] font-semibold tracking-tight sm:text-6xl lg:text-[4.25rem]">
+                  {profile.name}
                 </h1>
+                <p className="mt-4 font-mono text-[12px] tracking-[0.28em] text-accent uppercase">
+                  {profile.role}
+                </p>
               </Reveal>
 
               <Reveal delay={160}>
-                <p className="mt-6 max-w-xl text-lg text-muted text-pretty sm:text-xl">
-                  {profile.tagline}
-                </p>
+                <p className="mt-7 text-lg text-muted">{profile.headline}</p>
               </Reveal>
 
               <Reveal delay={240}>
@@ -109,10 +63,39 @@ export default function Home() {
                   <CvLink />
                 </div>
               </Reveal>
+
+              <Reveal delay={320} className="mt-12 lg:mt-auto lg:pt-12">
+                <SocialLinks size={22} />
+              </Reveal>
             </div>
 
-            <Reveal delay={320} className="lg:justify-self-end lg:w-full lg:max-w-sm">
-              <NowCard />
+            <Reveal
+              delay={200}
+              className="space-y-5 text-[17px] leading-relaxed text-muted text-pretty sm:text-lg"
+            >
+              <p>
+                I'm a full-stack developer who builds AI products that actually
+                ship — not prototypes. Between semesters I've built a{" "}
+                <Hl>hackathon-winning</Hl> clinical decision-support app on a
+                digital-twin platform, launched a{" "}
+                <Hl>live SaaS for freelancers</Hl> that flags scope creep
+                before it costs them, and placed{" "}
+                <Hl>top 10 nationally</Hl> in PLC programming.
+              </p>
+              <p>
+                My stack is <Hl>JavaScript</Hl>, <Hl>React</Hl>,{" "}
+                <Hl>Node.js</Hl> and <Hl>Python</Hl>. On the more
+                unconventional side, I also work with Siemens TIA Portal for
+                industrial automation and PLC programming — so I'm as
+                comfortable with a ladder diagram as with a REST API.
+              </p>
+              <p>
+                I'm a third-year Computer Science and Technology student at{" "}
+                <Hl>Obafemi Awolowo University</Hl>, where I also serve as
+                Class Representative. Outside of code, I'm usually building a
+                side project or figuring out how to make something that
+                already works, work better.
+              </p>
             </Reveal>
           </div>
         </Container>
