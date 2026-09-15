@@ -35,13 +35,15 @@ export default function Reveal({
     return () => observer.disconnect();
   }, [shown]);
 
+  // Visible is the default so the pre-rendered HTML is readable with no
+  // JavaScript. The hidden start state is scoped to `html.js` in index.css,
+  // so only browsers that will actually run the observer ever hide content.
   return (
     <Tag
       ref={ref}
+      data-reveal={shown ? "shown" : "hidden"}
       style={{ transitionDelay: `${delay}ms` }}
-      className={`transition-[opacity,transform] duration-700 ease-out ${
-        shown ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-      } ${className}`}
+      className={`translate-y-0 opacity-100 transition-[opacity,transform] duration-700 ease-out ${className}`}
     >
       {children}
     </Tag>

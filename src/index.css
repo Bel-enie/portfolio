@@ -56,6 +56,17 @@
 }
 
 @layer base {
+  /* Scroll-reveal start state. Scoped to `html.js` (set by an inline script
+     in index.html) so content is visible when scripts do not run: the
+     pre-rendered HTML must be readable without JavaScript. Reduced-motion
+     users keep everything visible too. */
+  @media not (prefers-reduced-motion: reduce) {
+    html.js [data-reveal="hidden"] {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+  }
+
   html {
     color-scheme: dark;
     scroll-behavior: smooth;

@@ -81,8 +81,9 @@ export default function Contact() {
     setErrors(found);
     if (Object.keys(found).length > 0) return;
 
-    // Honeypot: real visitors never see this field, bots fill it in.
-    if (event.target.elements.botcheck?.value) {
+    // Honeypot: real visitors never see this field, bots tick it.
+    // It is a checkbox, so test `checked` — `.value` is always "on".
+    if (event.target.elements.botcheck?.checked) {
       setStatus("sent");
       return;
     }
@@ -96,6 +97,9 @@ export default function Contact() {
     try {
       const response = await fetch(ENDPOINT, {
         method: "POST",
+        // A stalled mobile connection should fail over to the mailto
+        // fallback rather than sit on "Sending…" forever.
+        signal: AbortSignal.timeout(15000),
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: ACCESS_KEY,
@@ -106,9 +110,14 @@ export default function Contact() {
           message: values.message.trim(),
         }),
       });
+      if (!response.ok) {
+        setStatus("failed");
+        return;
+      }
       const data = await response.json();
       setStatus(data.success ? "sent" : "failed");
     } catch {
+      // Network error or the 15s timeout: offer the email client instead.
       setStatus("failed");
     }
   };

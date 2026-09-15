@@ -24,7 +24,7 @@ export default function CaseStudy({ project, index = 0 }) {
   const showImage = Boolean(project.image) && !imageFailed;
 
   const Thumb = (
-    <div className="group/thumb aspect-[4/3] overflow-hidden rounded-lg border border-line bg-paper">
+    <div className="group/thumb aspect-[4/3] overflow-hidden rounded-lg border border-line bg-paper lg:aspect-[5/4]">
       {showImage ? (
         <img
           src={project.image}
@@ -46,11 +46,15 @@ export default function CaseStudy({ project, index = 0 }) {
     </div>
   );
 
+  // clipPath rather than overflow-hidden: it still trims the watermark
+  // numeral, but does not create a scroll container, which would silently
+  // disable the sticky screenshot below.
   return (
     <Spotlight
       as="article"
       id={project.slug}
-      className="card-highlight overflow-hidden rounded-xl border border-line bg-surface p-5 sm:p-7 lg:p-8"
+      style={{ clipPath: "inset(0 round 12px)" }}
+      className="card-highlight rounded-xl border border-line bg-surface p-5 sm:p-7 lg:p-8"
     >
       <span
         aria-hidden="true"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Container from "./Container";
 import Button from "./Button";
@@ -19,6 +19,8 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const headerRef = useRef(null);
+  const toggleRef = useRef(null);
 
   // Border + blur only once the page has moved.
   useEffect(() => {
@@ -27,6 +29,33 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // While the mobile menu is open: lock the page behind it, close on
+  // Escape (returning focus to the toggle) and on a tap outside the header.
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    const onPointerDown = (event) => {
+      if (!headerRef.current?.contains(event.target)) setOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [open]);
 
   const pillLink = ({ isActive }) =>
     `rounded-full px-3.5 py-1.5 text-[14px] transition-colors duration-200 ${
@@ -37,6 +66,7 @@ export default function Header() {
 
   return (
     <div
+      ref={headerRef}
       className={`sticky top-0 z-50 transition-[background-color,border-color,backdrop-filter] duration-300 ${
         scrolled || open
           ? "border-b border-line bg-paper/80 backdrop-blur-md"
@@ -83,6 +113,7 @@ export default function Header() {
 
           {/* Mobile: menu button */}
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}

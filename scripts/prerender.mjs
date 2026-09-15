@@ -95,5 +95,20 @@ for (const page of pages) {
   console.log(`prerendered ${page.route.padEnd(10)} -> dist/${page.file}`);
 }
 
-writeFileSync(path.join(DIST, "app.html"), template);
-console.log("wrote SPA shell    -> dist/app.html");
+// 4. A real 404 page: pre-rendered like the others, but noindex and with
+// no canonical/og:url, so unknown URLs never look like the home page.
+let notFound = template.replace(
+  '<div id="root"></div>',
+  `<div id="root">${render("/404")}</div>`,
+);
+notFound = setTitle(notFound, "Page not found — Eniola Akingbade");
+notFound = setDescription(
+  notFound,
+  "That link does not lead anywhere. Browse the projects instead.",
+);
+notFound = notFound
+  .replace(/\s*<link rel="canonical"[^>]*>/, "")
+  .replace(/\s*<meta property="og:url"[^>]*>/, "")
+  .replace("</title>", '</title>\n    <meta name="robots" content="noindex" />');
+writeFileSync(path.join(DIST, "404.html"), notFound);
+console.log("prerendered 404       -> dist/404.html");
