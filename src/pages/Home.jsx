@@ -167,7 +167,7 @@ export default function Home() {
           <Reveal>
             <Label>Testimonials</Label>
             <h2 className="mt-4 text-3xl font-semibold sm:text-4xl">
-              What people say
+              In their words
             </h2>
           </Reveal>
           <Reveal delay={100} className="mt-10">
